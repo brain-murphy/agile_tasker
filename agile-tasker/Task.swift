@@ -6,13 +6,14 @@
 //  Copyright © 2016 Brian Murphy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Task {
     
-    var name : String?
-    var dueDate : NSDate?
-    var workLeft : Int?
+    var name : String!
+    var courseName : String?
+    var workLeft : Int!
+    var dueDate : NSDate!
     var details : String?
     
 }
