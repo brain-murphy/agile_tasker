@@ -59,9 +59,14 @@ class TaskTableViewController: UITableViewController {
     
     @IBAction func sendToTaskList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
-            let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
-            tasks.append(task)
-            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tasks[selectedIndexPath.row] = task
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+            }
         }
         
     }
@@ -102,14 +107,20 @@ class TaskTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            let taskDetailViewController = segue.destination as! NewTaskViewController
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
+            }
+        }
+        else if segue.identifier == "AddItem" {
+            print("Adding new task.")
+        }
     }
-    */
+    
 
 }

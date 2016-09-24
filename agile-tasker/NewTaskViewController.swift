@@ -101,6 +101,16 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
         super.viewDidLoad()
         
         nameTextField.delegate = self
+        
+        if let task = task {
+            navigationItem.title = "Edit Task"
+            nameTextField.text   = task.name
+            courseTextField.text = task.courseName
+            dateTextField.text = task.dueDate
+            workTextField.text = String(task.workLeft)
+            detailsTextField.text = task.details
+        }
+        
         checkValues()
         // Do any additional setup after loading the view.
     }
