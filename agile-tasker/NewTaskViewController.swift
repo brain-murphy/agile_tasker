@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTaskViewController: UIViewController {
+class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var courseLabel: UILabel!
@@ -20,7 +20,42 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var courseTextField: UITextField!
     @IBOutlet weak var workTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-
+    @IBOutlet weak var detailsTextField: UITextView!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    var task : Task?
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func checkValidName() -> Bool {
+        
+        let text = nameTextField.text ?? ""
+        return !text.isEmpty
+    }
+    
+    func checkValidDate() -> Bool {
+        
+        let text = dateTextField.text ?? ""
+        return !text.isEmpty
+    }
+    
+    func checkValidWork() -> Bool {
+        
+        let text = workTextField.text ?? ""
+        if Int(text) != nil {
+            return !text.isEmpty
+        } else {
+            return false
+        }
+    }
+    
+    func checkValues() {
+        saveButton.isEnabled = checkValidName() && checkValidDate() && checkValidWork()
+        print(saveButton.isEnabled)
+    }
+    
     @IBAction func textFieldEditing(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         
@@ -40,9 +75,33 @@ class NewTaskViewController: UIViewController {
         
     }
     
+    @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
+        checkValues()
+        
+    }
+    
+    @IBAction func textFieldDidEndEditing(_ textField: UITextField) {
+        checkValues()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if sender as AnyObject? === saveButton {
+            let name = nameTextField.text
+            let courseName = courseTextField.text ?? ""
+            let workLeft = Int(workTextField.text!)
+            let dueDate = dateTextField.description
+            let details = detailsTextField.text ?? ""
+            
+            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate, details: details)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameTextField.delegate = self
+        checkValues()
         // Do any additional setup after loading the view.
     }
 

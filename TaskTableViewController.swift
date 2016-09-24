@@ -11,7 +11,6 @@ import UIKit
 class TaskTableViewController: UITableViewController {
     
     var tasks = [Task]()
-    var sampleDate : NSDate!
     
     
     func loadSampleTasks() {
@@ -26,8 +25,6 @@ class TaskTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadSampleTasks()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +55,15 @@ class TaskTableViewController: UITableViewController {
         cell.dateLabel.text = task.dueDate
         
         return cell
+    }
+    
+    @IBAction func sendToTaskList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
+            let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
+            tasks.append(task)
+            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+        }
+        
     }
  
 

@@ -12,15 +12,15 @@
             <objects>
                 <tableViewController id="hQ9-DA-Gp3" customClass="TaskTableViewController" customModule="agile_tasker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wny-ig-aBQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="90" id="pGg-Ru-HX1" customClass="TaskTableViewCell" customModule="agile_tasker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pGg-Ru-HX1" id="9ac-Fu-C28">
-                                    <frame key="frameInset" width="414" height="89.666666666666671"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LH-mk-vbl">
@@ -79,7 +79,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Uv5-KM-iV7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bYB-LX-Tmd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-kW-jSH">
@@ -102,33 +102,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of Task" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-6g-WSO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-6g-WSO">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Hours to Completion" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-Wm-y6H">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Name or Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ve0-SS-Pjg">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to Select Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7qQ-9o-tn6">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
+                                    <action selector="textFieldDidBeginEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="qF6-yO-p85"/>
+                                    <action selector="textFieldDidEndEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="SRg-gb-JMa"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-Wm-y6H">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="yS4-9J-zsp"/>
+                                    <action selector="textFieldDidEndEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="XAo-xI-N2H"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ve0-SS-Pjg">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Required" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7qQ-9o-tn6">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="PM7-46-1AA"/>
+                                    <action selector="textFieldDidEndEditing:" destination="auT-Mx-9Si" eventType="editingDidEnd" id="TQ1-lK-iv5"/>
                                     <action selector="textFieldEditing:" destination="auT-Mx-9Si" eventType="editingDidBegin" id="4P5-P8-eCT"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EId-1A-scn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EId-1A-scn">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" lookupSuggestion="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7Y-SF-Qpv">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -167,8 +178,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Task" id="9eE-8P-3Ju">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="88K-Pl-qoU"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VNf-QY-ViF"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="88K-Pl-qoU">
+                            <connections>
+                                <action selector="cancel:" destination="auT-Mx-9Si" id="wtH-Lh-HHv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VNf-QY-ViF">
+                            <connections>
+                                <segue destination="8hs-3j-Kru" kind="unwind" unwindAction="sendToTaskListWithSender:" id="5N0-8o-9LS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="courseLabel" destination="dcV-kW-jSH" id="a7V-OA-RKJ"/>
@@ -176,13 +195,16 @@
                         <outlet property="dateLabel" destination="0CF-hG-hkD" id="wC3-Pp-MGs"/>
                         <outlet property="dateTextField" destination="7qQ-9o-tn6" id="fRZ-0t-9mv"/>
                         <outlet property="detailsLabel" destination="MtP-Db-TRL" id="DeQ-vZ-2Th"/>
+                        <outlet property="detailsTextField" destination="EId-1A-scn" id="F4k-tN-kgO"/>
                         <outlet property="nameLabel" destination="o7Y-SF-Qpv" id="nSJ-w9-Tr7"/>
                         <outlet property="nameTextField" destination="PLg-6g-WSO" id="vee-RU-E8B"/>
+                        <outlet property="saveButton" destination="VNf-QY-ViF" id="M00-Pf-M3K"/>
                         <outlet property="workLabel" destination="GXm-wT-tRS" id="jf4-Oo-OAc"/>
                         <outlet property="workTextField" destination="9s0-Wm-y6H" id="wdl-Tp-YLB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TI0-F7-Abv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8hs-3j-Kru" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2583.1999999999998" y="29.23538230884558"/>
         </scene>
