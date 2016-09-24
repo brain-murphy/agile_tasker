@@ -81,9 +81,14 @@ class TaskTableViewController: UITableViewController {
     
     @IBAction func sendToTaskList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
-            let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
-            tasks.append(task)
-            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tasks[selectedIndexPath.row] = task
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+            }
         }
         
     }

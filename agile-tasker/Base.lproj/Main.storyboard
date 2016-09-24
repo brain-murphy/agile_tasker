@@ -50,6 +50,7 @@
                                     <outlet property="dateLabel" destination="ZPX-8P-CWE" id="Zc7-zW-hcA"/>
                                     <outlet property="nameLabel" destination="9LH-mk-vbl" id="8Bc-gh-GCo"/>
                                     <outlet property="workLeftLabel" destination="8GY-2J-LPJ" id="w1F-4S-jCV"/>
+                                    <segue destination="auT-Mx-9Si" kind="show" identifier="showDetail" id="ZJG-9M-HgM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -251,7 +252,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peA-b5-1J4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="29.23538230884558"/>
+            <point key="canvasLocation" x="1742" y="384"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZJG-9M-HgM"/>
+    </inferredMetricsTieBreakers>
 </document>
