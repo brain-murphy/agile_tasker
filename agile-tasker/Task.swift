@@ -15,14 +15,16 @@ class Task {
     var workLeft : Int!
     var dueDate : String!
     var details : String?
+    var urgencyValue : Float!
     
-    init(name: String, courseName: String?, workLeft: Int, dueDate: String, details: String?) {
+    init(name: String, courseName: String?, workLeft: Int, dueDate: String, details: String?, urgencyValue: Float) {
         
         self.name = name
         self.courseName = courseName
         self.workLeft = workLeft
         self.dueDate = dueDate
         self.details = details
+        self.urgencyValue = urgencyValue
         
     }
     
