@@ -104,7 +104,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             let urgencyValue = urgencySlider.value
             
             task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details, urgencyValue: urgencyValue)
-        } else  if (segue.identifier == "completeTask") {
+        } else if (segue.identifier == "completeTask") {
             let name = nameTextField.text
             let courseName = courseTextField.text ?? ""
             let workLeft = Int(workTextField.text!)
