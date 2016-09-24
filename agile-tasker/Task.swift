@@ -16,6 +16,7 @@ class Task {
     var dueDate : String!
     var details : String?
     var urgencyValue : Float!
+    var isComplete : Bool?
     
     init(name: String, courseName: String?, workLeft: Int, dueDate: String, details: String?, urgencyValue: Float) {
         
