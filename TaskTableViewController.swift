@@ -76,11 +76,15 @@ class TaskTableViewController: UITableViewController {
         
         let addWork = UITableViewRowAction(style: .normal , title: " + ") { action, index in
             self.tasks[index.row].workLeft = self.tasks[index.row].workLeft + 1
+            
+            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft!)
         }
         addWork.backgroundColor = UIColor.red
         
         let removeWork = UITableViewRowAction(style: .normal, title: " - ") { action, index in
             self.tasks[index.row].workLeft = self.tasks[index.row].workLeft - 1
+            
+            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft!)
             
             if (self.tasks[index.row].workLeft == 0) {
                 self.tasks.remove(at: index.row)
@@ -94,10 +98,32 @@ class TaskTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        let cell = getTaskTableViewCell(indexPath: indexPath)
         
+        let workRemaining = tasks[indexPath.row].workLeft!
+        
+        setWorkRemaining(taskIndex: indexPath, newHoursRemaining: workRemaining)
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            cell.workRemainingLabel.alpha = 1.0
+        })
+    }
+    
+    func getTaskTableViewCell(indexPath: IndexPath?) -> TaskTableViewCell {
+        return tableView.cellForRow(at: indexPath!) as! TaskTableViewCell
+    }
+    
+    func setWorkRemaining(taskIndex: IndexPath, newHoursRemaining: Int) {
+        let cell = getTaskTableViewCell(indexPath: taskIndex)
+        cell.workRemainingLabel.text = "Work Remaining: \(newHoursRemaining)"
     }
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        let cell = getTaskTableViewCell(indexPath: indexPath)
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            cell.workRemainingLabel.alpha = 0.0
+        })
     }
     
     override func viewDidLoad() {
