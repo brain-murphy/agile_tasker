@@ -15,18 +15,25 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var workLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var urgencyLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var courseTextField: UITextField!
     @IBOutlet weak var workTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var detailsTextField: UITextView!
+    @IBOutlet weak var urgencySlider: UISlider!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var task : Task?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        if isPresentingInAddTaskMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController!.popViewController(animated: true)
+        }
     }
     
     func checkValidName() -> Bool {
@@ -91,8 +98,9 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             let workLeft = Int(workTextField.text!)
             let dueDate = dateTextField.text
             let details = detailsTextField.text ?? ""
+            let urgencyValue = urgencySlider.value
             
-            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details)
+            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details, urgencyValue: urgencyValue)
         }
     }
     
@@ -109,6 +117,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             dateTextField.text = task.dueDate
             workTextField.text = String(task.workLeft)
             detailsTextField.text = task.details
+            urgencySlider.value = task.urgencyValue
         }
         
         checkValues()
