@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "agile-tasker/TaskTableViewCell.swift"
+            timestampString = "496451827.718297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "TaskTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "agile_tasker.TaskTableViewCell.nameLabel.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "agile-tasker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brian/dev/agile-tasker/agile-tasker/TaskTableViewCell.swift"
+                  timestampString = "496451828.586704"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "agile_tasker.TaskTableViewCell.nameLabel.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "agile-tasker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brian/dev/agile-tasker/agile-tasker/TaskTableViewCell.swift"
+                  timestampString = "496451828.592751"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "agile_tasker.TaskTableViewCell.init (style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; agile_tasker.TaskTableViewCell"
+                  moduleName = "agile-tasker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brian/dev/agile-tasker/agile-tasker/TaskTableViewCell.swift"
+                  timestampString = "496451828.594447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "agile_tasker.TaskTableViewCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;agile_tasker.TaskTableViewCell&gt;"
+                  moduleName = "agile-tasker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brian/dev/agile-tasker/agile-tasker/TaskTableViewCell.swift"
+                  timestampString = "496451828.597133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
