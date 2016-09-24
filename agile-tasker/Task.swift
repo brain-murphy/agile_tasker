@@ -13,7 +13,17 @@ class Task {
     var name : String!
     var courseName : String?
     var workLeft : Int!
-    var dueDate : NSDate!
+    var dueDate : String!
     var details : String?
+    
+    init(name: String, courseName: String?, workLeft: Int, dueDate: String, details: String?) {
+        
+        self.name = name
+        self.courseName = courseName
+        self.workLeft = workLeft
+        self.dueDate = dueDate
+        self.details = details
+        
+    }
     
 }
