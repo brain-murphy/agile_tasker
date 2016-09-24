@@ -43,7 +43,6 @@ class TaskTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleTasks()
     }
 
     override func didReceiveMemoryWarning() {
