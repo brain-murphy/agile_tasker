@@ -53,9 +53,9 @@ class TaskTableViewController: UITableViewController {
         
         var task = tasks[indexPath.row]
         
-        cell.nameLabel.text = "name"
-        cell.dateLabel.text = "date"
-        cell.workLeftLabel.text = "hours"
+        cell.nameLabel.text = task.name
+        cell.workLeftLabel.text = String(task.workLeft)
+        cell.dateLabel.text = task.dueDate
         
         return cell
     }
