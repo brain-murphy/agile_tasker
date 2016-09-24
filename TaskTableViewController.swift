@@ -92,4 +92,19 @@ class TaskTableViewController: UITableViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let taskDetailViewController = segue.destination as! NewTaskViewController
+            if let selectedTaskCell = sender as? TaskTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedTaskCell)!
+                let selectedTask = tasks[indexPath.row]
+                taskDetailViewController.task = selectedTask
+            }
+        }
+        else if segue.identifier == "AddItem" {
+            print("Adding new task.")
+        }
+    }
+    
 }
