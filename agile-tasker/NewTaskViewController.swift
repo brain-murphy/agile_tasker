@@ -59,7 +59,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBAction func textFieldEditing(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         
-        datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         
         sender.inputView = datePickerView
         
@@ -69,7 +69,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     func datePickerValueChanged(sender:UIDatePicker) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         let myDate = dateFormatter.string(from: sender.date)
         dateTextField.text = myDate
         
