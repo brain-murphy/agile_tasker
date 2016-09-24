@@ -13,6 +13,7 @@
 		D3E7C2D71D9644DF00FBF9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E7C2D61D9644DF00FBF9CF /* Assets.xcassets */; };
 		D3E7C2DA1D9644DF00FBF9CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E7C2D81D9644DF00FBF9CF /* LaunchScreen.storyboard */; };
 		D3E7C2E51D9644DF00FBF9CF /* agile_taskerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7C2E41D9644DF00FBF9CF /* agile_taskerTests.swift */; };
+		E01505101D964E2F001A141D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015050F1D964E2F001A141D /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		D3E7C2E01D9644DF00FBF9CF /* agile-taskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "agile-taskerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E7C2E41D9644DF00FBF9CF /* agile_taskerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = agile_taskerTests.swift; sourceTree = "<group>"; };
 		D3E7C2E61D9644DF00FBF9CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E015050F1D964E2F001A141D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		D3E7C2CE1D9644DF00FBF9CF /* agile-tasker */ = {
 			isa = PBXGroup;
 			children = (
+				E015050F1D964E2F001A141D /* Task.swift */,
 				D3E7C2CF1D9644DF00FBF9CF /* AppDelegate.swift */,
 				D3E7C2D11D9644DF00FBF9CF /* ViewController.swift */,
 				D3E7C2D31D9644DF00FBF9CF /* Main.storyboard */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E7C2D21D9644DF00FBF9CF /* ViewController.swift in Sources */,
+				E01505101D964E2F001A141D /* Task.swift in Sources */,
 				D3E7C2D01D9644DF00FBF9CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +410,7 @@
 				D3E7C2EB1D9644DF00FBF9CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E7C2EC1D9644DF00FBF9CF /* Build configuration list for PBXNativeTarget "agile-taskerTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +419,7 @@
 				D3E7C2EE1D9644DF00FBF9CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
