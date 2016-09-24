@@ -33,6 +33,24 @@ class TaskTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasks.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "TaskTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TaskTableViewCell
+        
+        let task = tasks[indexPath.row]
+        
+        cell.nameLabel.text = task.name
+        cell.workLeftLabel.text = String(task.workLeft)
+        cell.dateLabel.text = task.dueDate
+        
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView,
                             moveRowAt sourceIndexPath: IndexPath,
                             to destinationIndexPath: IndexPath){
@@ -41,7 +59,38 @@ class TaskTableViewController: UITableViewController {
         
         tasks[destinationIndexPath.row] = tasks[sourceIndexPath.row]
         tasks[sourceIndexPath.row] = tempTask
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
+            self.tasks.remove(at: index.row)
+            
+            tableView.deleteRows(at: [index], with: UITableViewRowAnimation.left)
+        }
+        delete.backgroundColor = UIColor.gray
+        
+        let addWork = UITableViewRowAction(style: .normal , title: " + ") { action, index in
+            self.tasks[index.row].workLeft = self.tasks[index.row].workLeft + 1
+        }
+        addWork.backgroundColor = UIColor.red
+        
+        let removeWork = UITableViewRowAction(style: .normal, title: " - ") { action, index in
+            self.tasks[index.row].workLeft = self.tasks[index.row].workLeft - 1
+            
+            if (self.tasks[index.row].workLeft == 0) {
+                self.tasks.remove(at: index.row)
+                
+                tableView.deleteRows(at: [index], with: UITableViewRowAnimation.right)
+            }
+        }
+        removeWork.backgroundColor = UIColor.green
+        
+        return [delete, addWork, removeWork]
     }
     
     override func viewDidLoad() {
@@ -54,29 +103,8 @@ class TaskTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cellIdentifier = "TaskTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TaskTableViewCell
-        
-        let task = tasks[indexPath.row]
-        
-        cell.nameLabel.text = task.name
-        cell.workLeftLabel.text = String(task.workLeft)
-        cell.dateLabel.text = task.dueDate
-        
-        return cell
     }
     
     @IBAction func sendToTaskList(sender: UIStoryboardSegue) {
