@@ -89,10 +89,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             let name = nameTextField.text
             let courseName = courseTextField.text ?? ""
             let workLeft = Int(workTextField.text!)
-            let dueDate = dateTextField.description
+            let dueDate = dateTextField.text
             let details = detailsTextField.text ?? ""
             
-            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate, details: details)
+            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details)
         }
     }
     
