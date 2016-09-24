@@ -93,6 +93,13 @@ class TaskTableViewController: UITableViewController {
         return [delete, addWork, removeWork]
     }
     
+    override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleTasks()
