@@ -24,7 +24,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var detailsTextField: UITextView!
     @IBOutlet weak var urgencySlider: UISlider!
     
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var completeButton: UIButton!
+    
     var task : Task?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -60,7 +63,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     func checkValues() {
         saveButton.isEnabled = checkValidName() && checkValidDate() && checkValidWork()
-        print(saveButton.isEnabled)
+        completeButton.isEnabled = checkValidName() && checkValidDate() && checkValidWork()
     }
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
@@ -93,6 +96,15 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if sender as AnyObject? === saveButton {
+            let name = nameTextField.text
+            let courseName = courseTextField.text ?? ""
+            let workLeft = Int(workTextField.text!)
+            let dueDate = dateTextField.text
+            let details = detailsTextField.text ?? ""
+            let urgencyValue = urgencySlider.value
+            
+            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details, urgencyValue: urgencyValue)
+        } else  if (segue.identifier == "completeTask") {
             let name = nameTextField.text
             let courseName = courseTextField.text ?? ""
             let workLeft = Int(workTextField.text!)

@@ -99,16 +99,16 @@
             </objects>
             <point key="canvasLocation" x="908" y="30.134932533733135"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Completed Task Table View Controller-->
         <scene sceneID="RG6-wh-WD3">
             <objects>
-                <tableViewController id="Be9-v5-Ayu" sceneMemberID="viewController">
+                <tableViewController id="Be9-v5-Ayu" customClass="CompletedTaskTableViewController" customModule="agile_tasker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AqV-3T-Kwp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Flt-Ma-DaH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="CompletedTaskTableViewCell" id="Flt-Ma-DaH" customClass="CompletedTaskTableViewCell" customModule="agile_tasker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Flt-Ma-DaH" id="251-7G-xmq">
@@ -132,6 +132,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="courseLabel" destination="WdA-3b-wmp" id="WGu-xw-JIb"/>
+                                    <outlet property="nameLabel" destination="uke-RM-2e2" id="02h-ME-ixV"/>
                                     <segue destination="auT-Mx-9Si" kind="show" id="85u-8U-drH"/>
                                 </connections>
                             </tableViewCell>
@@ -141,6 +143,9 @@
                             <outlet property="delegate" destination="Be9-v5-Ayu" id="M9T-fW-cUy"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="completedTasksTable" destination="AqV-3T-Kwp" id="PK7-Rd-H8L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1z-zP-WuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,6 +233,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" lookupSuggestion="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXv-jf-Eri">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Mark As Completed"/>
+                                <connections>
+                                    <action selector="completeButton:" destination="auT-Mx-9Si" eventType="touchUpInside" id="zNN-FG-Gh8"/>
+                                    <segue destination="Be9-v5-Ayu" kind="show" identifier="completeTask" id="VpN-0p-hIo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -237,11 +250,11 @@
                             <constraint firstItem="EId-1A-scn" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="AMo-B8-uhP"/>
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="top" secondItem="GXm-wT-tRS" secondAttribute="bottom" constant="8" id="DbH-Y4-UJF"/>
                             <constraint firstItem="dcV-kW-jSH" firstAttribute="top" secondItem="PLg-6g-WSO" secondAttribute="bottom" constant="8" id="GRu-Kt-qea"/>
-                            <constraint firstItem="Uv5-KM-iV7" firstAttribute="top" secondItem="EId-1A-scn" secondAttribute="bottom" constant="20" id="IWR-T0-hq8"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="JWu-hd-7YH"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="JnX-W7-pwC"/>
                             <constraint firstItem="GXm-wT-tRS" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="M9X-Il-1hc"/>
                             <constraint firstItem="do5-xz-NJk" firstAttribute="top" secondItem="WgW-WI-aKy" secondAttribute="bottom" constant="8" id="N09-1i-uHq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BXv-jf-Eri" secondAttribute="trailing" constant="62" id="N6D-1b-tfz"/>
                             <constraint firstItem="MtP-Db-TRL" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="NU9-zb-ve6"/>
                             <constraint firstItem="GXm-wT-tRS" firstAttribute="top" secondItem="7qQ-9o-tn6" secondAttribute="bottom" constant="8" id="Nbl-k9-p5q"/>
                             <constraint firstItem="WgW-WI-aKy" firstAttribute="top" secondItem="9s0-Wm-y6H" secondAttribute="bottom" constant="8" id="NhY-AD-QTI"/>
@@ -250,6 +263,7 @@
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="Vla-Wf-fGO"/>
                             <constraint firstItem="7qQ-9o-tn6" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="YAg-fs-He2"/>
                             <constraint firstItem="0CF-hG-hkD" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="YGD-Aa-OOM"/>
+                            <constraint firstItem="Uv5-KM-iV7" firstAttribute="top" secondItem="BXv-jf-Eri" secondAttribute="bottom" id="ZEn-Wf-YtB"/>
                             <constraint firstItem="ve0-SS-Pjg" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="ZMg-af-lSM"/>
                             <constraint firstItem="MtP-Db-TRL" firstAttribute="top" secondItem="do5-xz-NJk" secondAttribute="bottom" constant="8" id="ZnD-4u-OmS"/>
                             <constraint firstItem="do5-xz-NJk" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="bDX-Ze-bkr"/>
@@ -257,6 +271,8 @@
                             <constraint firstItem="7qQ-9o-tn6" firstAttribute="top" secondItem="0CF-hG-hkD" secondAttribute="bottom" constant="8" id="cMs-mv-AgA"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="top" secondItem="o7Y-SF-Qpv" secondAttribute="bottom" constant="8" id="dU6-1U-bdi"/>
                             <constraint firstItem="ve0-SS-Pjg" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="kwz-w8-6lK"/>
+                            <constraint firstItem="BXv-jf-Eri" firstAttribute="top" secondItem="EId-1A-scn" secondAttribute="bottom" constant="8" id="lxE-Gu-eSb"/>
+                            <constraint firstItem="BXv-jf-Eri" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" constant="62" id="n3O-U8-Y2c"/>
                             <constraint firstItem="dcV-kW-jSH" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="oX3-vg-pdc"/>
                             <constraint firstItem="o7Y-SF-Qpv" firstAttribute="top" secondItem="0iW-xc-Ejm" secondAttribute="bottom" constant="8" id="rgQ-kA-Zjb"/>
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="s5Q-Cz-qtO"/>
@@ -277,6 +293,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="completeButton" destination="BXv-jf-Eri" id="rFl-AM-vG4"/>
                         <outlet property="courseLabel" destination="dcV-kW-jSH" id="a7V-OA-RKJ"/>
                         <outlet property="courseTextField" destination="ve0-SS-Pjg" id="5tM-6I-5GC"/>
                         <outlet property="dateLabel" destination="0CF-hG-hkD" id="wC3-Pp-MGs"/>
@@ -295,7 +312,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TI0-F7-Abv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8hs-3j-Kru" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2841" y="53"/>
+            <point key="canvasLocation" x="2840.8000000000002" y="52.623688155922046"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ktC-t2-Nh8">
@@ -335,6 +352,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="85u-8U-drH"/>
+        <segue reference="VpN-0p-hIo"/>
+        <segue reference="ZJG-9M-HgM"/>
     </inferredMetricsTieBreakers>
 </document>
