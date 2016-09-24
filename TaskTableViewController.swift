@@ -12,6 +12,8 @@ class TaskTableViewController: UITableViewController {
     
     var tasks = [Task]()
     
+    @IBOutlet var tasksTable: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
 //    func loadSampleTasks() {
 //        let task1 = Task(name: "hw1", courseName: "CS2110", workLeft: 10, dueDate: "11.21.1999", details: "")
@@ -22,6 +24,22 @@ class TaskTableViewController: UITableViewController {
 //        
 //        tasks += [task1, task2, task3, task4, task5]
 //    }
+    
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        tasksTable.setEditing(true, animated: true)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath,
+                            to destinationIndexPath: IndexPath){
+        
+        let tempTask = tasks[destinationIndexPath.row]
+        
+        tasks[destinationIndexPath.row] = tasks[sourceIndexPath.row]
+        tasks[sourceIndexPath.row] = tempTask
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +66,7 @@ class TaskTableViewController: UITableViewController {
         let cellIdentifier = "TaskTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TaskTableViewCell
         
-        var task = tasks[indexPath.row]
+        let task = tasks[indexPath.row]
         
         cell.nameLabel.text = task.name
         cell.workLeftLabel.text = String(task.workLeft)
