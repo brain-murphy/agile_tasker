@@ -28,7 +28,13 @@ class Task {
         
         let timeRemaining = dueDateDate!.timeIntervalSince(now as Date)
         
-        return (urgencyValue * 10000) / Float(timeRemaining - (Double(workLeft) * 3600.0))
+        let timeMargin = timeRemaining - (Double(workLeft) * 3600.0)
+        
+        if timeMargin <= 0 {
+            return 1000.0
+        } else {
+            return (urgencyValue * 10000) / Float(timeMargin)
+        }
     }
     
     

@@ -15,6 +15,8 @@ class TaskTableViewController: UITableViewController {
     
     var isEditingTable = false
     
+    var doubleTap = false
+    
     @IBOutlet var tasksTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
@@ -47,13 +49,13 @@ class TaskTableViewController: UITableViewController {
         let task = tasks[indexPath.row]
         
         
-        let priority = task.priority
-        cell.nameLabel.text = "\(priority)"
+        cell.nameLabel.text = task.name
         cell.workLeftLabel.text = String(task.workLeft)
         cell.dateLabel.text = task.dueDate
         
+        let priority = task.priority
         
-        if priority >= 0.7 {
+        if priority >= 0.7 && priority < 1000 {
             cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
         } else if priority <= 0.3 && priority > 0 {
             cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
@@ -86,13 +88,13 @@ class TaskTableViewController: UITableViewController {
             
             tableView.deleteRows(at: [index], with: UITableViewRowAnimation.left)
         }
-        delete.backgroundColor = UIColor.gray
+        delete.backgroundColor = UIColor(white: 0.25, alpha: 1.0)
         
         let addWork = UITableViewRowAction(style: .normal , title: " + ") { action, index in
             
             self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft + 1)
         }
-        addWork.backgroundColor = UIColor.red
+        addWork.backgroundColor = UIColor.gray
         
         let removeWork = UITableViewRowAction(style: .normal, title: " - ") { action, index in
             
@@ -104,12 +106,13 @@ class TaskTableViewController: UITableViewController {
                 tableView.deleteRows(at: [index], with: UITableViewRowAnimation.right)
             }
         }
-        removeWork.backgroundColor = UIColor.green
+        removeWork.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
         
         return [delete, addWork, removeWork]
     }
     
     override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        doubleTap = false
         
         let cell = getTaskTableViewCell(indexPath: indexPath)
         
@@ -135,16 +138,15 @@ class TaskTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        if indexPath != nil {
+        if indexPath != nil && !doubleTap {
+            doubleTap = true
             let cell = getTaskTableViewCell(indexPath: indexPath)
             
             let priority = tasks[(indexPath?.row)!].priority
-        
-            cell.nameLabel.text = "\(priority)"
             
             UIView.animate(withDuration: 0.25, animations: {
                 cell.workRemainingLabel.alpha = 0.0
-                if priority >= 0.7 {
+                if priority >= 0.7 && priority < 1000 {
                     cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
                 } else if priority <= 0.3 && priority > 0 {
                     cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
@@ -153,13 +155,16 @@ class TaskTableViewController: UITableViewController {
                 } else {
                     cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
                 }
-            })
+                }, completion: {finished in
+                    self.reorderRows()
+                })
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleTasks()
+        reorderRows()
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,12 +185,18 @@ class TaskTableViewController: UITableViewController {
             } else {
                 let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
                 tasks.append(task)
-                tasks.sort { $0.priority > $1.priority }
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 //checkComplete(task: task)
+                
+                reorderRows()
             }
         }
         
+    }
+    
+    func reorderRows() {
+        tasks.sort { $0.priority > $1.priority }
+        tableView.reloadData()
     }
     
     
