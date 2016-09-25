@@ -151,7 +151,6 @@ class TaskTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
             }
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -162,8 +161,7 @@ class TaskTableViewController: UITableViewController {
                 let selectedTask = tasks[indexPath.row]
                 taskDetailViewController.task = selectedTask
             }
-        }
-        else if segue.identifier == "AddItem" {
+        } else if segue.identifier == "AddItem" {
             print("Adding new task.")
         }
     }
