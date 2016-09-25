@@ -77,16 +77,14 @@ class TaskTableViewController: UITableViewController {
         delete.backgroundColor = UIColor.gray
         
         let addWork = UITableViewRowAction(style: .normal , title: " + ") { action, index in
-            self.tasks[index.row].workLeft = self.tasks[index.row].workLeft + 1
             
-            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft!)
+            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft + 1)
         }
         addWork.backgroundColor = UIColor.red
         
         let removeWork = UITableViewRowAction(style: .normal, title: " - ") { action, index in
-            self.tasks[index.row].workLeft = self.tasks[index.row].workLeft - 1
             
-            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft!)
+            self.setWorkRemaining(taskIndex: index, newHoursRemaining: self.tasks[index.row].workLeft - 1)
             
             if (self.tasks[index.row].workLeft == 0) {
                 self.tasks.remove(at: index.row)
@@ -118,6 +116,9 @@ class TaskTableViewController: UITableViewController {
     func setWorkRemaining(taskIndex: IndexPath, newHoursRemaining: Int) {
         let cell = getTaskTableViewCell(indexPath: taskIndex)
         cell.workRemainingLabel.text = "Work Remaining: \(newHoursRemaining)"
+        cell.workLeftLabel.text = "Work Remaining: \(newHoursRemaining)hr"
+        
+        tasks[taskIndex.row].workLeft = newHoursRemaining
     }
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
