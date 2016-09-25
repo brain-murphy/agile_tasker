@@ -47,16 +47,13 @@ class TaskTableViewController: UITableViewController {
         cell.nameLabel.text = task.name
         cell.workLeftLabel.text = String(task.workLeft)
         cell.dateLabel.text = task.dueDate
-        if task.urgencyValue >= 0.9 {
-            cell.urgencyLabel.text = "Urgent"
-        } else if task.urgencyValue >= 0.7 {
-            cell.urgencyLabel.text = "High"
-        } else if task.urgencyValue >= 0.3 {
-            cell.urgencyLabel.text = "Moderate"
+        if priority >= 0.7 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.75)
+        } else if priority <= 0.3 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 1.0, blue: 0.0, alpha: 0.75)
         } else {
-            cell.urgencyLabel.text = "Low"
+            cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.75)
         }
-        cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: CGFloat(task.urgencyValue))
         return cell
     }
     
@@ -132,6 +129,13 @@ class TaskTableViewController: UITableViewController {
         
         UIView.animate(withDuration: 0.25, animations: {
             cell.workRemainingLabel.alpha = 0.0
+            if priority >= 0.7 {
+                cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.75)
+            } else if priority <= 0.3 {
+                cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 1.0, blue: 0.0, alpha: 0.75)
+            } else {
+                cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.75)
+            }
         })
     }
     
