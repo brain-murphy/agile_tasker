@@ -14,7 +14,6 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var workLeftLabel: UILabel!
     @IBOutlet weak var workRemainingLabel: UILabel!
-    @IBOutlet weak var urgencyLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
