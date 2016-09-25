@@ -134,7 +134,7 @@
                                 <connections>
                                     <outlet property="courseLabel" destination="WdA-3b-wmp" id="WGu-xw-JIb"/>
                                     <outlet property="nameLabel" destination="uke-RM-2e2" id="02h-ME-ixV"/>
-                                    <segue destination="auT-Mx-9Si" kind="show" id="85u-8U-drH"/>
+                                    <segue destination="auT-Mx-9Si" kind="show" identifier="completeTask" id="85u-8U-drH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -227,43 +227,48 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="do5-xz-NJk"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kKr-xb-IA4">
+                                <connections>
+                                    <action selector="toggleSwitch:" destination="auT-Mx-9Si" eventType="valueChanged" id="V8G-NN-CaJ"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrP-ug-E1y">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EId-1A-scn">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" lookupSuggestion="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXv-jf-Eri">
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Mark As Completed"/>
-                                <connections>
-                                    <action selector="completeButton:" destination="auT-Mx-9Si" eventType="touchUpInside" id="zNN-FG-Gh8"/>
-                                    <segue destination="Be9-v5-Ayu" kind="show" identifier="completeTask" id="VpN-0p-hIo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kKr-xb-IA4" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="1zu-5D-Oil"/>
                             <constraint firstItem="do5-xz-NJk" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="4Lj-wo-tEl"/>
                             <constraint firstItem="o7Y-SF-Qpv" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="7ep-LS-Gln"/>
                             <constraint firstItem="7qQ-9o-tn6" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="9iR-zO-xkp"/>
                             <constraint firstItem="EId-1A-scn" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="AMo-B8-uhP"/>
+                            <constraint firstItem="Uv5-KM-iV7" firstAttribute="top" secondItem="SrP-ug-E1y" secondAttribute="bottom" constant="13" id="BCc-lp-9fW"/>
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="top" secondItem="GXm-wT-tRS" secondAttribute="bottom" constant="8" id="DbH-Y4-UJF"/>
+                            <constraint firstItem="kKr-xb-IA4" firstAttribute="top" secondItem="EId-1A-scn" secondAttribute="bottom" constant="8" id="GHE-NR-tfZ"/>
                             <constraint firstItem="dcV-kW-jSH" firstAttribute="top" secondItem="PLg-6g-WSO" secondAttribute="bottom" constant="8" id="GRu-Kt-qea"/>
+                            <constraint firstItem="kKr-xb-IA4" firstAttribute="leading" secondItem="SrP-ug-E1y" secondAttribute="trailing" constant="8" id="GUB-ab-dtK"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="JWu-hd-7YH"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="JnX-W7-pwC"/>
                             <constraint firstItem="GXm-wT-tRS" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="M9X-Il-1hc"/>
                             <constraint firstItem="do5-xz-NJk" firstAttribute="top" secondItem="WgW-WI-aKy" secondAttribute="bottom" constant="8" id="N09-1i-uHq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BXv-jf-Eri" secondAttribute="trailing" constant="62" id="N6D-1b-tfz"/>
                             <constraint firstItem="MtP-Db-TRL" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="NU9-zb-ve6"/>
                             <constraint firstItem="GXm-wT-tRS" firstAttribute="top" secondItem="7qQ-9o-tn6" secondAttribute="bottom" constant="8" id="Nbl-k9-p5q"/>
                             <constraint firstItem="WgW-WI-aKy" firstAttribute="top" secondItem="9s0-Wm-y6H" secondAttribute="bottom" constant="8" id="NhY-AD-QTI"/>
                             <constraint firstItem="ve0-SS-Pjg" firstAttribute="top" secondItem="dcV-kW-jSH" secondAttribute="bottom" constant="8" id="PXa-EB-7lP"/>
                             <constraint firstItem="WgW-WI-aKy" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="RQp-w8-ku8"/>
+                            <constraint firstItem="Uv5-KM-iV7" firstAttribute="top" secondItem="kKr-xb-IA4" secondAttribute="bottom" constant="8" id="RWS-NI-Ax9"/>
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="Vla-Wf-fGO"/>
                             <constraint firstItem="7qQ-9o-tn6" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="YAg-fs-He2"/>
                             <constraint firstItem="0CF-hG-hkD" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="YGD-Aa-OOM"/>
-                            <constraint firstItem="Uv5-KM-iV7" firstAttribute="top" secondItem="BXv-jf-Eri" secondAttribute="bottom" id="ZEn-Wf-YtB"/>
                             <constraint firstItem="ve0-SS-Pjg" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="ZMg-af-lSM"/>
                             <constraint firstItem="MtP-Db-TRL" firstAttribute="top" secondItem="do5-xz-NJk" secondAttribute="bottom" constant="8" id="ZnD-4u-OmS"/>
                             <constraint firstItem="do5-xz-NJk" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="bDX-Ze-bkr"/>
@@ -271,8 +276,6 @@
                             <constraint firstItem="7qQ-9o-tn6" firstAttribute="top" secondItem="0CF-hG-hkD" secondAttribute="bottom" constant="8" id="cMs-mv-AgA"/>
                             <constraint firstItem="PLg-6g-WSO" firstAttribute="top" secondItem="o7Y-SF-Qpv" secondAttribute="bottom" constant="8" id="dU6-1U-bdi"/>
                             <constraint firstItem="ve0-SS-Pjg" firstAttribute="trailing" secondItem="bYB-LX-Tmd" secondAttribute="trailingMargin" id="kwz-w8-6lK"/>
-                            <constraint firstItem="BXv-jf-Eri" firstAttribute="top" secondItem="EId-1A-scn" secondAttribute="bottom" constant="8" id="lxE-Gu-eSb"/>
-                            <constraint firstItem="BXv-jf-Eri" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" constant="62" id="n3O-U8-Y2c"/>
                             <constraint firstItem="dcV-kW-jSH" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="oX3-vg-pdc"/>
                             <constraint firstItem="o7Y-SF-Qpv" firstAttribute="top" secondItem="0iW-xc-Ejm" secondAttribute="bottom" constant="8" id="rgQ-kA-Zjb"/>
                             <constraint firstItem="9s0-Wm-y6H" firstAttribute="leading" secondItem="bYB-LX-Tmd" secondAttribute="leadingMargin" id="s5Q-Cz-qtO"/>
@@ -280,6 +283,7 @@
                             <constraint firstItem="EId-1A-scn" firstAttribute="top" secondItem="MtP-Db-TRL" secondAttribute="bottom" constant="7.5" id="yiI-Hn-LCe"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Task" id="9eE-8P-3Ju">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="88K-Pl-qoU">
                             <connections>
@@ -288,12 +292,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="VNf-QY-ViF">
                             <connections>
-                                <segue destination="8hs-3j-Kru" kind="unwind" unwindAction="sendToTaskListWithSender:" id="5N0-8o-9LS"/>
+                                <segue destination="8hs-3j-Kru" kind="unwind" unwindAction="sendToTaskListWithSender:" id="z4o-pT-Gzd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="completeButton" destination="BXv-jf-Eri" id="rFl-AM-vG4"/>
+                        <outlet property="completeLabel" destination="SrP-ug-E1y" id="M5r-Y1-EZl"/>
+                        <outlet property="completeToggle" destination="kKr-xb-IA4" id="3UX-Yp-0z3"/>
                         <outlet property="courseLabel" destination="dcV-kW-jSH" id="a7V-OA-RKJ"/>
                         <outlet property="courseTextField" destination="ve0-SS-Pjg" id="5tM-6I-5GC"/>
                         <outlet property="dateLabel" destination="0CF-hG-hkD" id="wC3-Pp-MGs"/>
@@ -312,7 +317,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TI0-F7-Abv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8hs-3j-Kru" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2840.8000000000002" y="52.623688155922046"/>
+            <point key="canvasLocation" x="2885.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ktC-t2-Nh8">
@@ -352,7 +357,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VpN-0p-hIo"/>
         <segue reference="ZJG-9M-HgM"/>
     </inferredMetricsTieBreakers>
 </document>

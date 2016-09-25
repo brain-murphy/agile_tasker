@@ -16,6 +16,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var workLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var urgencyLabel: UILabel!
+    @IBOutlet weak var completeLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var courseTextField: UITextField!
@@ -23,10 +24,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var detailsTextField: UITextView!
     @IBOutlet weak var urgencySlider: UISlider!
-    
+    @IBOutlet weak var completeToggle: UISwitch!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var completeButton: UIButton!
+    
     
     var task : Task?
     
@@ -55,15 +56,34 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         let text = workTextField.text ?? ""
         if Int(text) != nil {
+            if Int(text)! <= 0 {
+                completeToggle.setOn(true, animated: true)
+                task?.isComplete = true;
+            } else {
+                completeToggle.setOn(false, animated: true)
+                task?.isComplete = false
+            }
             return !text.isEmpty
         } else {
             return false
         }
     }
     
+    
+    @IBAction func toggleSwitch(_ sender: UISwitch) {
+        if completeToggle.isOn {
+            workTextField.text = "0"
+            task?.isComplete = true
+            checkValues()
+        } else {
+            workTextField.text = nil
+            task?.isComplete = false
+            saveButton.isEnabled = false
+        }
+    }
+    
     func checkValues() {
         saveButton.isEnabled = checkValidName() && checkValidDate() && checkValidWork()
-        completeButton.isEnabled = checkValidName() && checkValidDate() && checkValidWork()
     }
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
@@ -104,15 +124,6 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             let urgencyValue = urgencySlider.value
             
             task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details, urgencyValue: urgencyValue)
-        } else if (segue.identifier == "completeTask") {
-            let name = nameTextField.text
-            let courseName = courseTextField.text ?? ""
-            let workLeft = Int(workTextField.text!)
-            let dueDate = dateTextField.text
-            let details = detailsTextField.text ?? ""
-            let urgencyValue = urgencySlider.value
-            
-            task = Task(name: name!, courseName: courseName, workLeft: workLeft!, dueDate: dueDate!, details: details, urgencyValue: urgencyValue)
         }
     }
     
@@ -130,6 +141,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, UINavigation
             workTextField.text = String(task.workLeft)
             detailsTextField.text = task.details
             urgencySlider.value = task.urgencyValue
+            
         }
         
         checkValues()
