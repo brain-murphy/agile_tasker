@@ -35,11 +35,11 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pGg-Ru-HX1" id="9ac-Fu-C28">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LH-mk-vbl">
-                                            <frame key="frameInset" minX="8" minY="8" width="359" height="21"/>
+                                            <frame key="frameInset" minX="8" minY="8" width="166" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -66,11 +66,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Urgency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oka-YP-c8b">
+                                            <frame key="frameInset" minX="182" minY="8" width="185" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="ZPX-8P-CWE" id="Zc7-zW-hcA"/>
                                     <outlet property="nameLabel" destination="9LH-mk-vbl" id="8Bc-gh-GCo"/>
+                                    <outlet property="urgencyLabel" destination="Oka-YP-c8b" id="rKe-0U-Jca"/>
                                     <outlet property="workLeftLabel" destination="8GY-2J-LPJ" id="w1F-4S-jCV"/>
                                     <outlet property="workRemainingLabel" destination="HMt-Ne-5K2" id="VbC-RK-qxA"/>
                                     <segue destination="auT-Mx-9Si" kind="show" identifier="showDetail" id="ZJG-9M-HgM"/>
@@ -120,7 +128,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Flt-Ma-DaH" id="251-7G-xmq">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uke-RM-2e2">
@@ -310,7 +318,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Usn-b2-gFf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Vof-Dw-Cug">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vof-Dw-Cug">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -328,7 +336,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KqF-q8-p2S" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lJW-ZV-Gky">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lJW-ZV-Gky">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
