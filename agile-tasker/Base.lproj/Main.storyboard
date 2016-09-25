@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Usn-b2-gFf">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Usn-b2-gFf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -39,7 +39,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LH-mk-vbl">
-                                            <frame key="frameInset" minX="8" minY="8" width="359" height="21"/>
+                                            <frame key="frameInset" minX="8" minY="8" width="166" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -66,11 +66,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Urgency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhs-bT-4wJ">
+                                            <frame key="frameInset" minX="182" minY="8" width="185" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="ZPX-8P-CWE" id="Zc7-zW-hcA"/>
                                     <outlet property="nameLabel" destination="9LH-mk-vbl" id="8Bc-gh-GCo"/>
+                                    <outlet property="urgencyLabel" destination="dhs-bT-4wJ" id="3vk-AU-pdg"/>
                                     <outlet property="workLeftLabel" destination="8GY-2J-LPJ" id="w1F-4S-jCV"/>
                                     <outlet property="workRemainingLabel" destination="HMt-Ne-5K2" id="VbC-RK-qxA"/>
                                     <segue destination="auT-Mx-9Si" kind="show" identifier="showDetail" id="ZJG-9M-HgM"/>
@@ -332,7 +340,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Usn-b2-gFf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Vof-Dw-Cug">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vof-Dw-Cug">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -350,7 +358,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KqF-q8-p2S" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lJW-ZV-Gky">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lJW-ZV-Gky">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

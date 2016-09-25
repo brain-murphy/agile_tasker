@@ -18,11 +18,11 @@ class TaskTableViewController: UITableViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     func loadSampleTasks() {
-        let task1 = Task(name: "hw1", courseName: "CS2110", workLeft: 10, dueDate: "11.21.1999", details: "", urgencyValue: 30)
-        let task2 = Task(name: "hw2", courseName: "CS2110", workLeft: 10, dueDate: "11.22.1999", details: "", urgencyValue: 40)
-        let task3 = Task(name: "hw3", courseName: "CS2110", workLeft: 10, dueDate: "11.23.1999", details: "", urgencyValue: 50)
-        let task4 = Task(name: "hw4", courseName: "CS2110", workLeft: 10, dueDate: "11.24.1999", details: "", urgencyValue: 60)
-        let task5 = Task(name: "hw5", courseName: "CS2110", workLeft: 10, dueDate: "11.25.1999", details: "", urgencyValue: 70)
+        let task1 = Task(name: "hw1", courseName: "CS2110", workLeft: 10, dueDate: "11.21.1999", details: "", urgencyValue: 0.3)
+        let task2 = Task(name: "hw2", courseName: "CS2110", workLeft: 10, dueDate: "11.22.1999", details: "", urgencyValue: 0.4)
+        let task3 = Task(name: "hw3", courseName: "CS2110", workLeft: 10, dueDate: "11.23.1999", details: "", urgencyValue: 0.5)
+        let task4 = Task(name: "hw4", courseName: "CS2110", workLeft: 10, dueDate: "11.24.1999", details: "", urgencyValue: 0.6)
+        let task5 = Task(name: "hw5", courseName: "CS2110", workLeft: 10, dueDate: "11.25.1999", details: "", urgencyValue: 0.7)
     
         tasks += [task1, task2, task3, task4, task5]
     }
@@ -47,7 +47,16 @@ class TaskTableViewController: UITableViewController {
         cell.nameLabel.text = task.name
         cell.workLeftLabel.text = String(task.workLeft)
         cell.dateLabel.text = task.dueDate
-        
+        if task.urgencyValue >= 0.9 {
+            cell.urgencyLabel.text = "Urgent"
+        } else if task.urgencyValue >= 0.7 {
+            cell.urgencyLabel.text = "High"
+        } else if task.urgencyValue >= 0.3 {
+            cell.urgencyLabel.text = "Medium"
+        } else {
+            cell.urgencyLabel.text = "Low"
+        }
+        cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: CGFloat(task.urgencyValue))
         return cell
     }
     
