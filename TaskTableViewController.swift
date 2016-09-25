@@ -11,6 +11,7 @@ import UIKit
 class TaskTableViewController: UITableViewController {
     
     var tasks = [Task]()
+    var completeTasks = [Task]()
     
     var isEditingTable = false
     
@@ -158,14 +159,18 @@ class TaskTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tasks[selectedIndexPath.row] = task
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                //checkComplete(task: task)
             } else {
                 let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
                 tasks.append(task)
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+                //checkComplete(task: task)
             }
         }
         
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
@@ -175,8 +180,7 @@ class TaskTableViewController: UITableViewController {
                 let selectedTask = tasks[indexPath.row]
                 taskDetailViewController.task = selectedTask
             }
-        }
-        else if segue.identifier == "AddItem" {
+        } else if segue.identifier == "AddItem" {
             print("Adding new task.")
         }
     }
