@@ -180,6 +180,7 @@ class TaskTableViewController: UITableViewController {
             } else {
                 let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
                 tasks.append(task)
+                tasks.sort { $0.priority > $1.priority }
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 //checkComplete(task: task)
             }
