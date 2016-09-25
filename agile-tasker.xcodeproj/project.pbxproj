@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					D3E7C2CB1D9644DE00FBF9CF = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = RLZMJU3GY4;
 						ProvisioningStyle = Automatic;
 					};
 					D3E7C2DF1D9644DF00FBF9CF = {
@@ -359,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RLZMJU3GY4;
 				INFOPLIST_FILE = "agile-tasker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brainmurphy.agile-tasker";
@@ -371,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RLZMJU3GY4;
 				INFOPLIST_FILE = "agile-tasker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brainmurphy.agile-tasker";

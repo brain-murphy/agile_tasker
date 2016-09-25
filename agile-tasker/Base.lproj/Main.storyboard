@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Usn-b2-gFf">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Usn-b2-gFf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -35,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pGg-Ru-HX1" id="9ac-Fu-C28">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LH-mk-vbl">
@@ -66,19 +66,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Urgency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhs-bT-4wJ">
-                                            <frame key="frameInset" minX="182" minY="8" width="185" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="ZPX-8P-CWE" id="Zc7-zW-hcA"/>
                                     <outlet property="nameLabel" destination="9LH-mk-vbl" id="8Bc-gh-GCo"/>
-                                    <outlet property="urgencyLabel" destination="dhs-bT-4wJ" id="3vk-AU-pdg"/>
                                     <outlet property="workLeftLabel" destination="8GY-2J-LPJ" id="w1F-4S-jCV"/>
                                     <outlet property="workRemainingLabel" destination="HMt-Ne-5K2" id="VbC-RK-qxA"/>
                                     <segue destination="auT-Mx-9Si" kind="show" identifier="showDetail" id="ZJG-9M-HgM"/>
@@ -94,11 +86,6 @@
                         <barButtonItem title="Item" id="b9F-B0-4B0"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="To Do Tasks" id="eIZ-14-lh7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4Ni-Ed-SpB">
-                            <connections>
-                                <action selector="editAction:" destination="hQ9-DA-Gp3" id="mhM-Pv-qP4"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="msh-OX-eT6">
                             <connections>
                                 <segue destination="KqF-q8-p2S" kind="presentation" identifier="AddTask" modalTransitionStyle="coverVertical" id="C34-8P-chu"/>
@@ -107,7 +94,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="editButton" destination="4Ni-Ed-SpB" id="Nca-UK-KoE"/>
                         <outlet property="tasksTable" destination="Wny-ig-aBQ" id="TTB-mT-9zU"/>
                     </connections>
                 </tableViewController>
@@ -128,7 +114,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Flt-Ma-DaH" id="251-7G-xmq">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uke-RM-2e2">

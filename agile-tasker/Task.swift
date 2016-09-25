@@ -18,6 +18,19 @@ class Task {
     var urgencyValue : Float!
     var isComplete : Bool!
     
+    var priority: Float {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        
+        let dueDateDate = dateFormatter.date(from: dueDate)
+        
+        let now = NSDate.init()
+        
+        let timeRemaining = dueDateDate!.timeIntervalSince(now as Date)
+        
+        return (urgencyValue * 10000) / Float(timeRemaining - (Double(workLeft) * 3600.0))
+    }
+    
     
     
     init(name: String, courseName: String?, workLeft: Int, dueDate: String, details: String?, urgencyValue: Float) {
@@ -30,18 +43,5 @@ class Task {
         self.urgencyValue = urgencyValue
         self.isComplete = false
         
-    }
-    
-    public func priority() -> Float {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
-        
-        let dueDateDate = dateFormatter.date(from: dueDate)
-        
-        let now = NSDate.init()
-        
-        let timeRemaining = dueDateDate!.timeIntervalSince(now as Date)
-        
-        return urgencyValue / Float(timeRemaining - (Double(workLeft) * 3600.0))
     }
 }

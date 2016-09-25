@@ -11,6 +11,7 @@ import UIKit
 class TaskTableViewController: UITableViewController {
     
     var tasks = [Task]()
+    var completeTasks = [Task]()
     
     var isEditingTable = false
     
@@ -18,11 +19,11 @@ class TaskTableViewController: UITableViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     func loadSampleTasks() {
-        let task1 = Task(name: "hw1", courseName: "CS2110", workLeft: 10, dueDate: "11-21-1999 10:51", details: "", urgencyValue: 0.3)
-        let task2 = Task(name: "hw2", courseName: "CS2110", workLeft: 10, dueDate: "11-21-1999 10:51", details: "", urgencyValue: 0.4)
-        let task3 = Task(name: "hw3", courseName: "CS2110", workLeft: 10, dueDate: "11-21-1999 10:51", details: "", urgencyValue: 0.5)
-        let task4 = Task(name: "hw4", courseName: "CS2110", workLeft: 10, dueDate: "11-21-1999 10:51", details: "", urgencyValue: 0.6)
-        let task5 = Task(name: "hw5", courseName: "CS2110", workLeft: 10, dueDate: "11-21-1999 10:51", details: "", urgencyValue: 0.7)
+        let task1 = Task(name: "hw1", courseName: "CS2110", workLeft: 10, dueDate: "09-27-2016 10:51", details: "", urgencyValue: 0.3)
+        let task2 = Task(name: "hw2", courseName: "CS2110", workLeft: 10, dueDate: "09-25-2016 10:51", details: "", urgencyValue: 0.4)
+        let task3 = Task(name: "hw3", courseName: "CS2110", workLeft: 10, dueDate: "09-26-2016 10:51", details: "", urgencyValue: 0.5)
+        let task4 = Task(name: "hw4", courseName: "CS2110", workLeft: 10, dueDate: "09-30-2016 10:51", details: "", urgencyValue: 0.6)
+        let task5 = Task(name: "hw5", courseName: "CS2110", workLeft: 10, dueDate: "09-24-2016 10:51", details: "", urgencyValue: 0.7)
         
     
         tasks += [task1, task2, task3, task4, task5]
@@ -45,19 +46,22 @@ class TaskTableViewController: UITableViewController {
         
         let task = tasks[indexPath.row]
         
-        cell.nameLabel.text = task.name
+        
+        let priority = task.priority
+        cell.nameLabel.text = "\(priority)"
         cell.workLeftLabel.text = String(task.workLeft)
         cell.dateLabel.text = task.dueDate
-        if task.urgencyValue >= 0.9 {
-            cell.urgencyLabel.text = "Urgent"
-        } else if task.urgencyValue >= 0.7 {
-            cell.urgencyLabel.text = "High"
-        } else if task.urgencyValue >= 0.3 {
-            cell.urgencyLabel.text = "Medium"
+        
+        
+        if priority >= 0.7 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        } else if priority <= 0.3 && priority > 0 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+        } else if priority >= 0.3 && priority <= 0.7 {
+            cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 1.0, blue: 0.0, alpha: 0.5)
         } else {
-            cell.urgencyLabel.text = "Low"
+            cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
-        cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: CGFloat(task.urgencyValue))
         return cell
     }
     
@@ -133,9 +137,22 @@ class TaskTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         if indexPath != nil {
             let cell = getTaskTableViewCell(indexPath: indexPath)
+            
+            let priority = tasks[(indexPath?.row)!].priority
         
+            cell.nameLabel.text = "\(priority)"
+            
             UIView.animate(withDuration: 0.25, animations: {
                 cell.workRemainingLabel.alpha = 0.0
+                if priority >= 0.7 {
+                    cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+                } else if priority <= 0.3 && priority > 0 {
+                    cell.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+                } else if priority >= 0.3 && priority <= 0.7 {
+                    cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 1.0, blue: 0.0, alpha: 0.5)
+                } else {
+                    cell.backgroundColor = UIColor.init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                }
             })
         }
     }
@@ -159,13 +176,18 @@ class TaskTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tasks[selectedIndexPath.row] = task
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                //checkComplete(task: task)
             } else {
                 let newIndexPath = NSIndexPath(row: tasks.count, section: 0)
                 tasks.append(task)
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+                //checkComplete(task: task)
             }
         }
+        
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
