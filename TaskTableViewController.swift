@@ -117,7 +117,7 @@ class TaskTableViewController: UITableViewController {
     
     func setWorkRemaining(taskIndex: IndexPath, newHoursRemaining: Int) {
         let cell = getTaskTableViewCell(indexPath: taskIndex)
-        cell.workRemainingLabel.text = "Work Remaining: \(newHoursRemaining) hrs."
+        cell.workRemainingLabel.text = "Work Remaining: \(newHoursRemaining)"
     }
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
